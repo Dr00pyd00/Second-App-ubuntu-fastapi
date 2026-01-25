@@ -15,3 +15,10 @@ class UserDataFromDbSchema(BaseModel):
     username: str
     is_active : bool
     created_at : datetime
+
+    model_config = {"from_attributes":True}
+
+# what the Oauth2PasswordRequest have to give:
+class UserOauth2PwUsernameSchema(BaseModel):
+    username: str
+    password: str

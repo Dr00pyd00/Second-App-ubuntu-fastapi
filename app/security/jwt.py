@@ -3,7 +3,7 @@ from datetime import datetime, timedelta, timezone
 
 from app.errors_msg.jwt import ERROR_CREDENTIALS_JWT
 from app.models.users import User
-from app.services.users_service import get_user_by_id_or_404
+from app.schemas.token import TokenSubDataSchema
 
 
 SECRET_KEY = "patate2000"
@@ -16,8 +16,8 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30
         # exp
         # iat
 
-def create_access_token(data:dict)->str:
-    to_encode = data.copy()
+def create_access_token(data:TokenSubDataSchema)->str:
+    to_encode = data.model_dump()
 
     # expiration setup:
     now = datetime.now(timezone.utc)

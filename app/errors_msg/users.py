@@ -15,3 +15,9 @@ def error_user_not_found_by_id(id:int)-> HTTPException:
         status_code=status.HTTP_404_NOT_FOUND,
         detail=f"user with ID:{id} NOT FOUND..."
     )
+
+# Error for Invalids Credentials login:
+ERROR_USER_INVALID_CREDENTIALS = HTTPException(
+    status_code=status.HTTP_401_UNAUTHORIZED,
+    detail="Wrong credentials: Password or Username INVALID"
+)
