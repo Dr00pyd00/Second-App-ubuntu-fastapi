@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 
 from app.models.users import User
 from app.schemas.users import UserCreateSchema, UserDataFromDbSchema
-from app.core.security import hash_pw, verify_password
+from app.security.pw_hashing import hash_pw 
 from app.errors_msg.users import error_username_taken, error_user_not_found_by_id
 
 
@@ -15,6 +15,7 @@ def get_user_by_id_or_404(id:int, db:Session)->User | None:
     if not user:
         error_user_not_found_by_id(id=id)
     return user
+
 
 # Create user:
 def create_user_service(
