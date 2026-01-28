@@ -23,3 +23,8 @@ class User(Base):
     # "all": tout les type de modifs prit en compte
     # "delete-orphan": supprimer les post dont les User n'existe plus
     own_posts = relationship("Post", back_populates="owner", cascade="all, delete-orphan" )
+
+    # pour les likes:
+    likes = relationship("PostLike",
+                        back_populates="like_owner",
+                        cascade="all, delete-orphan")
