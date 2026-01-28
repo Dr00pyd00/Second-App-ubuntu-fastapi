@@ -20,7 +20,6 @@ def get_user_by_id_or_404(id:int, db:Session)->User | None:
         error_user_not_found_by_id(id=id)
     return user
 
-
 # Create user:
 def create_user_service(
         data: UserCreateSchema,

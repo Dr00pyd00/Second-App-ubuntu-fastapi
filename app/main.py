@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
 from app.core.database import Base, engine
-from app.models.post import PostModel
+from app.models.post import Post
 from app.models.users import User
 from app.routers.post import router as post_router
 from app.routers.users import router as users_router
