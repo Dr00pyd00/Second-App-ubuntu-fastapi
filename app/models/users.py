@@ -13,6 +13,7 @@ class User(Base):
     username = Column(String, nullable=False, unique=True)
     password = Column(String, nullable=False)
     is_active = Column(Boolean, nullable=False, server_default="TRUE")
+    email = Column(String, nullable=True, unique= True)
     created_at = Column(
         TIMESTAMP(timezone=True),
         nullable=False,

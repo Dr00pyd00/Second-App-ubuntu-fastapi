@@ -13,7 +13,7 @@ from app.routers.posts_likes import router as post_like_router
 app = FastAPI()
 
 # table autocreation:
-Base.metadata.create_all(bind=engine)
+#Base.metadata.create_all(bind=engine)
 
 # ROUTERS:
 app.include_router(post_router)
