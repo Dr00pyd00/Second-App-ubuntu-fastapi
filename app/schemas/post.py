@@ -25,6 +25,7 @@ class PostDataFromDbSchema(BaseModel):
     published: Optional[bool] = False
     owner: UserDataFromDbSchema
     status: str
+    deleted_at: datetime | None
 
     model_config = {"from_attributes":True}
 
