@@ -18,7 +18,7 @@ class Settings(BaseSettings):
 
     # je met l'url pour la db ici 
     @property
-    def get_db_url(self):
+    def db_url(self):
         return (
             f"postgresql://{self.postgres_user}:"
             f"{self.postgres_password}@"

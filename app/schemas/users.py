@@ -21,7 +21,7 @@ class UserCreateSchema(BaseModel):
 
     @field_validator("username")
     @classmethod
-    def username_alphanumeric(cls, name)->str:
+    def username_alphanumeric(cls, name:str)->str:
         if re.match(r'^[a-zA-Z0-9_]+$', name) is None:
             raise ValueError("<username> must be alphanumeric only (can contain '_').")
         return name

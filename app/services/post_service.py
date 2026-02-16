@@ -28,9 +28,24 @@ from app.schemas.post import PostDataToCreateSchema
 
 # Service: Gestion CRUD for database = retrieve, select, modify.
 
+#==============================================#
+#======= Utils Functions    ===================#
+#==============================================#
 
 # chercher dans tout les posts y compris les softs deleted:
 def get_post_any_state_by_id_or_404(post_id:int, db:Session)->Post :
+    """Search post even if soft deleted, return post or raise HTTPException.
+
+    Args:
+        post_id (int): ID of the post you want
+        db (Session): Session/gen of sqlalchemy database
+
+    Returns:
+        Post: Post object of database
+
+    Raises:
+        HTTPException 404 if post not found.
+    """
     post = db.query(Post).filter(
         Post.id == post_id,
         ).first()
@@ -40,7 +55,19 @@ def get_post_any_state_by_id_or_404(post_id:int, db:Session)->Post :
 
 
 # Chercher un post NO DELETED sinon renvoyer un 404:
-def get_post_by_id_or_404(post_id:int, db:Session)->Post | None:
+def get_post_by_id_or_404(post_id:int, db:Session)->Post :
+    """Search post if NOT soft delete, return the post if exist else raise HTTPException.
+
+    Args:
+        post_id (int): ID of the post you want
+        db (Session): Session/gen of sqlalchemy database
+
+    Returns:
+        Post : Post object of database
+
+    Raises:
+        HTTPException 404 if post not found
+    """
     post = db.query(Post).filter(
         Post.id == post_id,
         Post.deleted_at.is_(None)

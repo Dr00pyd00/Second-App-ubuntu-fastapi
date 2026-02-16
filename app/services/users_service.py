@@ -11,20 +11,45 @@ from app.schemas.token import TokenBearerCreatedSchema, TokenSubDataSchema
 
 
 
-# Service for Users in db:
 
 # get user or send a 404 HTTPException:
-def get_user_by_id_or_404(id:int, db:Session)->User | None:
+def get_user_by_id_or_404(id:int, db:Session)->User:
+    """Get a user by ID or raise HTTPException.
+
+    Args:
+        id (int): user id
+        db (Session): Session/gen of sqlalchely database
+
+    Returns:
+        User: User Object of database
+    
+    Raises:
+        HTTPException 404 is user not found
+    """
     user = db.query(User).filter(User.id == id).first()
     if not user:
         error_user_not_found_by_id(id=id)
     return user
+
+
 
 # Create user:
 def create_user_service(
         data: UserCreateSchema,
         db: Session,
 )->User:
+    """Create a new user object.
+
+    Args:
+        data (UserCreateSchema): schema of inputs needed for creation (username(str) + password(str))
+        db (Session): Session/gen for sqlalchemy databse
+
+    Returns:
+        User: User Object from database.
+    
+    Raises:
+        HTTPExcption 409 (conflict) if username already taken
+    """
     
     # check if username alreaady exist:
     existing_user = db.query(User).filter(User.username == data.username).first()
@@ -40,11 +65,24 @@ def create_user_service(
     return new_user
 
 
+
 # authentication of a user:
 def auth_user_service(
         user_creds:UserOauth2PwUsernameSchema,
         db:Session,
 )->TokenBearerCreatedSchema:
+    """Take user inputed credentials and verify with database
+
+    Args:
+        user_creds (UserOauth2PwUsernameSchema): username(str) + password(str) in pydantic
+        db (Session): Session/gen for sqlalchemy databse
+
+    Raises:
+        ERROR_USER_INVALID_CREDENTIALS: HTTPException 401 non-authorized
+
+    Returns:
+        TokenBearerCreatedSchema: access_token(str) + token_type(str) in pydnatic
+    """
     user = db.query(User).filter(User.username == user_creds.username).first()
     if not user:
         raise ERROR_USER_INVALID_CREDENTIALS
