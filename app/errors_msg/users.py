@@ -19,5 +19,5 @@ def error_user_not_found_by_id(id:int)-> HTTPException:
 # Error for Invalids Credentials login:
 ERROR_USER_INVALID_CREDENTIALS = HTTPException(
     status_code=status.HTTP_401_UNAUTHORIZED,
-    detail="Wrong credentials: Password or Username INVALID"
+    detail="Invalid credentials: Password or Username INVALID"
 )

@@ -1,24 +1,27 @@
 from pydantic_settings import BaseSettings
-from pydantic import Field
+from pydantic import ConfigDict, Field
 
 
 class Settings(BaseSettings):
 
+    model_config = ConfigDict(env_file=".env")
+
     # database:
-    postgres_user : str = Field(..., env="POSTGRES_USER")
-    postgres_password : str = Field(..., env="POSTGRES_PASSWORD")
-    postgres_host : str = Field(default="localhost", env="POSTGRES_HOST")
-    postgres_port : int = Field(default=5432, env="POSTGRES_PORT")
-    postgres_database_name : str = Field(..., env="POSTGRES_DATABASE_NAME")
+    postgres_user : str  
+    postgres_password : str 
+    postgres_host : str = "localhost"
+    postgres_port : int = 5432
+    postgres_database_name : str 
 
     # security:
-    secret_key : str = Field(..., env="SECRET_KEY")
-    algorithm : str = Field(default="HS256", env="ALGORITHM")
-    access_token_expire_minutes : int = Field(default=30, env="ACCESS_TOKEN_EXPIRE_MINUTES")
+    secret_key : str 
+    algorithm : str  = "HS256"
+    access_token_expire_minutes : int = 30
 
     # je met l'url pour la db ici 
     @property
     def db_url(self):
+        """ Build complete url for sql"""
         return (
             f"postgresql://{self.postgres_user}:"
             f"{self.postgres_password}@"
@@ -28,10 +31,10 @@ class Settings(BaseSettings):
         )
 
 
-    # config sert a gerer la config de la class:
-    class Config:
-        env_file = ".env"  # dit ou chercher.
-        case_sensitive = False
+    # config sert a gerer la config de la class: DEPRECATED
+    # class Config:
+    #     env_file = ".env"  # dit ou chercher.
+    #     case_sensitive = False
 
 # crée une instance a utiliser pour mon app:
 settings = Settings() 
