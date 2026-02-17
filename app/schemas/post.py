@@ -27,7 +27,7 @@ class PostDataToCreateSchema(BaseModel):
         max_length=100000,
         description="content of the post: 1 to 100000 characters."
     )
-    published: Optional[bool] = False
+    published: Optional[bool] = True
 
 class PostDataFromDbSchema(BaseModel):
     id: int

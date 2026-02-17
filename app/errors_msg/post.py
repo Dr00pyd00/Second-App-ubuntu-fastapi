@@ -11,6 +11,11 @@ def error_post_not_found_by_id(id:int)-> HTTPException:
 
 #====== Soft Delete =========================
 
+ERROR_NOT_CURRENT_USER_POST  = HTTPException(
+    status_code=status.HTTP_401_UNAUTHORIZED,
+    detail="Current user is not Post owner"
+)
+
 # si le post a deja ete delete et que je veux delete par dessus:
 ERROR_ALREADY_SOFT_DELETED = HTTPException(
     status_code=status.HTTP_401_UNAUTHORIZED,

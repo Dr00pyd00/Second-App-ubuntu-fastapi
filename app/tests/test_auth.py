@@ -26,6 +26,11 @@ def test_login_sucess(client: TestClient):
 
     assert login_response.status_code == 200
 
+    # verifier si j'ai bien le token:
+    data = login_response.json()
+    assert "access_token" in data
+    assert data["token_type"] == "bearer"
+
 
 # Login Wrong Password ===========================================================
 def test_login_wrong_password(client: TestClient):
@@ -54,7 +59,7 @@ def test_login_wrong_password(client: TestClient):
 
 
 # Login Wrong Username =====================================================
-def test_login_wrong_password(client: TestClient):
+def test_login_wrong_username(client: TestClient):
 
     # creer un user:
     user_data = {
@@ -71,7 +76,7 @@ def test_login_wrong_password(client: TestClient):
         }
 
     # je me login avec un MAUVAIS username:
-    login_response = client.post("/login", data=wrong_usename_user_data)     # ATTENTION IL FAUT METTRE DATA et pas json ...
+    login_response = client.post("/login", data=wrong_usename_user_data)     # ATTENTION IL FAUT METTRE DATA et pas json CAR: c'est pas un pydantic c'est Oauth2PasswordRequestForm!
     # print(login_response.text)
     assert login_response.status_code == 401
     assert "invalid credentials" in login_response.text.lower()

@@ -17,7 +17,7 @@ def test_create_user_success(client: TestClient):
     }
 
     # 2.  on exectute la requete:
-    response = client.post("users/", json=user_data)
+    response = client.post("/users/", json=user_data)
 
     # 3. on verifie si ca colle:
     assert response.status_code == 201
@@ -146,7 +146,7 @@ def test_get_user_by_id_failed(client: TestClient):
     assert response.status_code == 404 
     # print(data)
     assert "not found" in response.text.lower()
-    
+
 
 
 

@@ -22,7 +22,7 @@ Le router se contente de décrire l'API et d'invoquer le service.
 from sqlalchemy.orm import Session
 
 from app.models.post import Post
-from app.errors_msg.post import error_post_not_found_by_id, ERROR_ALREADY_SOFT_DELETED, ERROR_TRY_RESTORE_UNDELETED_POST
+from app.errors_msg.post import error_post_not_found_by_id, ERROR_ALREADY_SOFT_DELETED, ERROR_TRY_RESTORE_UNDELETED_POST, ERROR_NOT_CURRENT_USER_POST
 from app.schemas.post import PostDataToCreateSchema 
 
 
@@ -110,9 +110,13 @@ def update_post_service(
 # Delete post:
 def delete_post_service(
     post_id: int,
-    db: Session
+    db: Session,
+    user_id: int,
 )->None:
     post = get_post_by_id_or_404(post_id=post_id, db=db)
+    if post.user_id != user_id:
+        raise ERROR_NOT_CURRENT_USER_POST
+
     post.soft_delete() 
     db.flush()
     db.commit()

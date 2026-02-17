@@ -92,7 +92,8 @@ async def update_post_by_id(
 async def delete_post_by_id(
     post_id: Annotated[int, Path()],
     db: Annotated[Session, Depends(get_db)],
+    current_user: Annotated[User, Depends(get_current_user)],
 )->None:
-    delete_post_service(post_id=post_id, db=db)
+    delete_post_service(post_id=post_id, db=db, user_id= current_user.id)
 
     

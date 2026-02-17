@@ -34,9 +34,9 @@ def db_session():
     try:
         yield db
     finally:
-        db.close()
         # on supprime toute les tables creers pour le test.
-        Base.metadata.drop_all(bind=engine)
+        Base.metadata.drop_all(bind=engine) # toujours avant de close!
+        db.close()
 
     
 # Maintenant on créé un client ( navigateur viruel ou postman perso):
