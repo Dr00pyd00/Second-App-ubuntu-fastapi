@@ -17,6 +17,7 @@ class StatusMixin:
                     sqlEnum(StatusEnum, name="status_enum", create_type=False), 
                     default=StatusEnum.ACTIVE, 
                     nullable=False,
+                    server_default="ACTIVE"
 
                     )
 

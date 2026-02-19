@@ -70,7 +70,7 @@ def delete_post_like_service(
 
     db.delete(existing_like)
     db.commit()
-    logger.warning(f"Attempt by User ID:{user_id} to Like Post ID:{post_id} but already liked.")
+    logger.info(f"Post ID:{post_id} unliked by User ID:{user_id}.") 
     return
    
     

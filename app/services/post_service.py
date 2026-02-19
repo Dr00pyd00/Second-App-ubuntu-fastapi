@@ -106,8 +106,13 @@ def update_post_service(
     post_id: int,
     data: PostDataToCreateSchema,
     db: Session,
+    user_id: int
 )->Post:
     post = get_post_by_id_or_404(post_id=post_id, db=db)
+    # check si l'user est le posseseur du post:
+    if user_id != post.user_id:
+        logger.warning(f"User ID:{user_id} tried to update Post ID:{post_id} of an other User.")
+        raise ERROR_NOT_CURRENT_USER_POST 
     for k,v in data.model_dump().items():
         setattr(post,k,v)
     db.commit()
@@ -138,7 +143,7 @@ def restore_post_service(
         db: Session,
 )->None:
     post = get_post_any_state_by_id_or_404(post_id=post_id, db=db)
-    if not post or post.deleted_at is None:
+    if post.deleted_at is None:
         logger.warning(f"Attempt to restore non-deleted Post ID:{post_id}")
         raise ERROR_TRY_RESTORE_UNDELETED_POST
 

@@ -62,3 +62,89 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2026-02-19 18:25:55 - app.main - INFO - ✅ Routers charged!
 2026-02-19 18:26:44 - app.main - INFO - 🚀 Fastapi App started!
 2026-02-19 18:26:44 - app.main - INFO - ✅ Routers charged!
+2026-02-19 19:56:51 - app.main - INFO - 🚀 Fastapi App started!
+2026-02-19 19:56:51 - app.main - INFO - ✅ Routers charged!
+2026-02-19 19:57:50 - app.main - INFO - 🚀 Fastapi App started!
+2026-02-19 19:57:50 - app.main - INFO - ✅ Routers charged!
+2026-02-19 20:00:03 - app.main - INFO - 🚀 Fastapi App started!
+2026-02-19 20:00:03 - app.main - INFO - ✅ Routers charged!
+2026-02-19 20:01:36 - app.main - INFO - 🚀 Fastapi App started!
+2026-02-19 20:01:36 - app.main - INFO - ✅ Routers charged!
+2026-02-19 20:02:05 - app.main - INFO - 🚀 Fastapi App started!
+2026-02-19 20:02:05 - app.main - INFO - ✅ Routers charged!
+2026-02-19 20:03:09 - app.main - INFO - 🚀 Fastapi App started!
+2026-02-19 20:03:09 - app.main - INFO - ✅ Routers charged!
+2026-02-19 20:06:56 - app.main - INFO - 🚀 Fastapi App started!
+2026-02-19 20:06:56 - app.main - INFO - ✅ Routers charged!
+2026-02-19 20:07:15 - app.main - INFO - 🚀 Fastapi App started!
+2026-02-19 20:07:15 - app.main - INFO - ✅ Routers charged!
+2026-02-19 20:07:20 - app.main - INFO - 🚀 Fastapi App started!
+2026-02-19 20:07:20 - app.main - INFO - ✅ Routers charged!
+2026-02-19 20:07:20 - httpx - INFO - HTTP Request: POST http://testserver/users "HTTP/1.1 307 Temporary Redirect"
+2026-02-19 20:07:20 - app.services.users_service - INFO - New User created ID:1
+2026-02-19 20:07:20 - httpx - INFO - HTTP Request: POST http://testserver/users/ "HTTP/1.1 201 Created"
+2026-02-19 20:07:21 - app.services.users_service - INFO - User ID:1 authenticated and token created.
+2026-02-19 20:07:21 - httpx - INFO - HTTP Request: POST http://testserver/login "HTTP/1.1 200 OK"
+2026-02-19 20:07:21 - httpx - INFO - HTTP Request: POST http://testserver/users "HTTP/1.1 307 Temporary Redirect"
+2026-02-19 20:07:21 - app.services.users_service - INFO - New User created ID:1
+2026-02-19 20:07:21 - httpx - INFO - HTTP Request: POST http://testserver/users/ "HTTP/1.1 201 Created"
+2026-02-19 20:07:22 - app.services.users_service - WARNING - Login failed: wrong password for User ID:1 (testusername)
+2026-02-19 20:07:22 - httpx - INFO - HTTP Request: POST http://testserver/login "HTTP/1.1 401 Unauthorized"
+2026-02-19 20:07:22 - httpx - INFO - HTTP Request: POST http://testserver/users "HTTP/1.1 307 Temporary Redirect"
+2026-02-19 20:07:22 - app.services.users_service - INFO - New User created ID:1
+2026-02-19 20:07:22 - httpx - INFO - HTTP Request: POST http://testserver/users/ "HTTP/1.1 201 Created"
+2026-02-19 20:07:22 - app.services.users_service - WARNING - Login failed: unknown username 'testusername2'
+2026-02-19 20:07:22 - httpx - INFO - HTTP Request: POST http://testserver/login "HTTP/1.1 401 Unauthorized"
+2026-02-19 20:07:22 - httpx - INFO - HTTP Request: POST http://testserver/users "HTTP/1.1 307 Temporary Redirect"
+2026-02-19 20:07:22 - app.services.users_service - INFO - New User created ID:1
+2026-02-19 20:07:22 - httpx - INFO - HTTP Request: POST http://testserver/users/ "HTTP/1.1 201 Created"
+2026-02-19 20:07:23 - app.services.users_service - INFO - User ID:1 authenticated and token created.
+2026-02-19 20:07:23 - httpx - INFO - HTTP Request: POST http://testserver/login "HTTP/1.1 200 OK"
+2026-02-19 20:07:23 - httpx - INFO - HTTP Request: GET http://testserver/users/me "HTTP/1.1 200 OK"
+2026-02-19 20:07:23 - httpx - INFO - HTTP Request: GET http://testserver/users/me "HTTP/1.1 401 Unauthorized"
+2026-02-19 20:07:23 - app.services.users_service - INFO - New User created ID:1
+2026-02-19 20:07:23 - httpx - INFO - HTTP Request: POST http://testserver/users/ "HTTP/1.1 201 Created"
+2026-02-19 20:07:24 - app.services.users_service - INFO - User ID:1 authenticated and token created.
+2026-02-19 20:07:24 - httpx - INFO - HTTP Request: POST http://testserver/login "HTTP/1.1 200 OK"
+2026-02-19 20:07:24 - app.services.post_service - INFO - Post ID:1 created by user ID:1.
+2026-02-19 20:07:24 - httpx - INFO - HTTP Request: POST http://testserver/posts/ "HTTP/1.1 201 Created"
+2026-02-19 20:07:24 - httpx - INFO - HTTP Request: POST http://testserver/posts/ "HTTP/1.1 401 Unauthorized"
+2026-02-19 20:07:24 - app.services.users_service - INFO - New User created ID:1
+2026-02-19 20:07:24 - httpx - INFO - HTTP Request: POST http://testserver/users/ "HTTP/1.1 201 Created"
+2026-02-19 20:07:25 - app.services.users_service - INFO - User ID:1 authenticated and token created.
+2026-02-19 20:07:25 - httpx - INFO - HTTP Request: POST http://testserver/login "HTTP/1.1 200 OK"
+2026-02-19 20:07:25 - app.services.post_service - INFO - Post ID:1 created by user ID:1.
+2026-02-19 20:07:25 - httpx - INFO - HTTP Request: POST http://testserver/posts/ "HTTP/1.1 201 Created"
+2026-02-19 20:07:25 - app.services.post_service - WARNING - Pot ID:43 not found.
+2026-02-19 20:07:25 - httpx - INFO - HTTP Request: DELETE http://testserver/posts/43 "HTTP/1.1 404 Not Found"
+2026-02-19 20:07:25 - app.services.users_service - INFO - New User created ID:1
+2026-02-19 20:07:25 - httpx - INFO - HTTP Request: POST http://testserver/users/ "HTTP/1.1 201 Created"
+2026-02-19 20:07:25 - app.services.users_service - INFO - User ID:1 authenticated and token created.
+2026-02-19 20:07:25 - httpx - INFO - HTTP Request: POST http://testserver/login "HTTP/1.1 200 OK"
+2026-02-19 20:07:25 - app.services.post_service - INFO - Post ID:1 created by user ID:1.
+2026-02-19 20:07:25 - httpx - INFO - HTTP Request: POST http://testserver/posts/ "HTTP/1.1 201 Created"
+2026-02-19 20:07:25 - app.services.post_service - INFO - Post ID:1 soft deleted by User ID:1.
+2026-02-19 20:07:25 - httpx - INFO - HTTP Request: DELETE http://testserver/posts/1 "HTTP/1.1 204 No Content"
+2026-02-19 20:07:25 - app.services.post_service - WARNING - Pot ID:1 not found.
+2026-02-19 20:07:25 - httpx - INFO - HTTP Request: GET http://testserver/posts/1 "HTTP/1.1 404 Not Found"
+2026-02-19 20:07:26 - app.services.users_service - INFO - New User created ID:1
+2026-02-19 20:07:26 - httpx - INFO - HTTP Request: POST http://testserver/users/ "HTTP/1.1 201 Created"
+2026-02-19 20:07:26 - httpx - INFO - HTTP Request: POST http://testserver/users "HTTP/1.1 307 Temporary Redirect"
+2026-02-19 20:07:26 - httpx - INFO - HTTP Request: POST http://testserver/users/ "HTTP/1.1 422 Unprocessable Entity"
+2026-02-19 20:07:26 - httpx - INFO - HTTP Request: POST http://testserver/users "HTTP/1.1 307 Temporary Redirect"
+2026-02-19 20:07:26 - httpx - INFO - HTTP Request: POST http://testserver/users/ "HTTP/1.1 422 Unprocessable Entity"
+2026-02-19 20:07:26 - httpx - INFO - HTTP Request: POST http://testserver/users "HTTP/1.1 307 Temporary Redirect"
+2026-02-19 20:07:26 - httpx - INFO - HTTP Request: POST http://testserver/users/ "HTTP/1.1 422 Unprocessable Entity"
+2026-02-19 20:07:26 - httpx - INFO - HTTP Request: POST http://testserver/users "HTTP/1.1 307 Temporary Redirect"
+2026-02-19 20:07:26 - httpx - INFO - HTTP Request: POST http://testserver/users/ "HTTP/1.1 422 Unprocessable Entity"
+2026-02-19 20:07:26 - httpx - INFO - HTTP Request: POST http://testserver/users "HTTP/1.1 307 Temporary Redirect"
+2026-02-19 20:07:26 - app.services.users_service - INFO - New User created ID:1
+2026-02-19 20:07:26 - httpx - INFO - HTTP Request: POST http://testserver/users/ "HTTP/1.1 201 Created"
+2026-02-19 20:07:26 - httpx - INFO - HTTP Request: GET http://testserver/users/1 "HTTP/1.1 200 OK"
+2026-02-19 20:07:27 - httpx - INFO - HTTP Request: POST http://testserver/users "HTTP/1.1 307 Temporary Redirect"
+2026-02-19 20:07:27 - app.services.users_service - INFO - New User created ID:1
+2026-02-19 20:07:27 - httpx - INFO - HTTP Request: POST http://testserver/users/ "HTTP/1.1 201 Created"
+2026-02-19 20:07:27 - app.services.users_service - WARNING - User ID:999999999 not found.
+2026-02-19 20:07:27 - httpx - INFO - HTTP Request: GET http://testserver/users/999999999 "HTTP/1.1 404 Not Found"
+2026-02-19 20:08:43 - app.main - INFO - 🚀 Fastapi App started!
+2026-02-19 20:08:43 - app.main - INFO - ✅ Routers charged!

@@ -68,10 +68,6 @@ async def get_all_posts(
         .all()
     )
 
-    # test des likes:
-    for post in posts:
-        likers = [like.user.username for like in post.likes if like.user]
-        print(f"post {post.id} liked by: {likers}")
     return posts
 
 
@@ -101,8 +97,9 @@ async def update_post_by_id(
     post_id: Annotated[int, Path()],
     db: Annotated[Session, Depends(get_db)],
     post_new_fields: Annotated[PostDataToCreateSchema, Body()],
+    current_user: Annotated[User, Depends(get_current_user)],
 ):
-    return update_post_service(post_id=post_id, data=post_new_fields, db=db)
+    return update_post_service(post_id=post_id, data=post_new_fields, db=db, user_id=current_user.id)
 
 
 # DELETE by ID:
