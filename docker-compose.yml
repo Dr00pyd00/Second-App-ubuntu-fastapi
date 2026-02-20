@@ -27,6 +27,8 @@ services:
 
     depends_on:
       - db
+    volumes:
+      - ./log:/app/logs
 
 volumes:
   postgres_data:
