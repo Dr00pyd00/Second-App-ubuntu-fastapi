@@ -1,0 +1,40 @@
+databases:
+  - name: fastapi-db
+    databaseName: fastapi_blog_db
+    user: fastapi_user
+    plan: free
+
+services:
+  - type: web
+    name: fastapi_blog
+    runtime: docker
+    plan: free
+
+    envVars:
+      - key: POSTGRES_HOST
+        fromDatabase:
+          name: fastapi-db
+          property: host
+      - key: POSTGRES_PORT
+        fromDatabase:
+          name: fastapi-db
+          property: port
+      - key: POSTGRES_USER
+        fromDatabase:
+          name: fastapi-db 
+          property: user
+      - key: POSTGRES_PASSWORD
+        fromDatabase:
+          name: fastapi-db 
+          property: password 
+      - key: POSTGRES_DATABASE_NAME
+        fromDatabase:
+          name: fastapi-db 
+          property: database
+      - key: SECRET_KEY
+        sync: false
+      - key: ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: 30
+        
